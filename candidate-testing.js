@@ -16,7 +16,7 @@ let candidateAnswer = [];
 let questions = [ "Who was the first American woman in space? ", "True or false: 5 kilometer == 5000 meters? ", "(5 + 3)/2 * 10 = ? ", "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2? ", "What is the minimum crew size for the ISS? "];
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
 let candidateAnswers = [];
-
+let totalCorrect ="";
 
 
 function askForName() {
@@ -49,14 +49,15 @@ function gradeQuiz(candidateAnswers) {
 //TODO 3.2 use this variable to calculate the candidates score.
 let numCorrect = 0
 let i = 0
-while (i < questions.length && candidateAnswers[i]=== correctAnswers[i]) {
+while (i < questions.length && (candidateAnswers[i].indexOf(correctAnswers[i])=== correctAnswers[i].indexOf(candidateAnswers[i]))) {
        i++
-}
        numCorrect++
-    
+}
+      
+    totalCorrect = numCorrect
   
 
-let grade = (numCorrect/questions.length*100);
+let grade = (totalCorrect/questions.length*100);
 // let grade = ((numCorrect/questions.length) * 100);
 
   console.log(`
@@ -70,7 +71,7 @@ Your Answer: ${candidateAnswers[i]}
 Correct Answer: ${correctAnswers[i]}`)
     }
 
-  grade = numCorrect/ questions.length *100
+  grade = (totalCorrect/ questions.length) *100
 
   let passOrFail = "";
   if (grade >= 80) {
